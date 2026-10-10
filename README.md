@@ -81,7 +81,10 @@ The production build disables source maps. The GitHub Pages deploy command build
 
 ## Deployment
 
-Deployment has not been completed yet. The configured GitHub Pages target is [https://a2rp.github.io/project-work-management/](https://a2rp.github.io/project-work-management/). The public repository and Pages site must be available before this URL can be reported as live.
+The app is published with GitHub Pages from the `gh-pages` branch.
+
+- Live app: [https://a2rp.github.io/project-work-management/](https://a2rp.github.io/project-work-management/)
+- Source repository: [https://github.com/a2rp/project-work-management](https://github.com/a2rp/project-work-management)
 
 Deploy after the repository is connected:
 
