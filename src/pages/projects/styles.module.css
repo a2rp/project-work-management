@@ -1,0 +1,308 @@
+.page {
+    width: min(1320px, calc(100% - 56px));
+    margin: 0 auto;
+    padding: 38px 0 16px;
+    .intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        .headingLine {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            .pageIcon {
+                display: grid;
+                width: 50px;
+                height: 50px;
+                place-items: center;
+                border-radius: 16px;
+                color: var(--primary);
+                background: var(--primary-soft);
+                font-size: 23px;
+            }
+            h1 {
+                color: var(--ink);
+                font-size: clamp(29px, 3vw, 40px);
+                font-weight: 760;
+                letter-spacing: -0.055em;
+                line-height: 1.15;
+            }
+            p {
+                margin-top: 5px;
+                color: var(--muted);
+                font-size: 15px;
+            }
+        }
+    }
+    .primaryButton,
+    .secondaryButton {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 16px;
+        border: 1px solid transparent;
+        border-radius: 11px;
+        font-size: 14px;
+        font-weight: 650;
+        white-space: nowrap;
+    }
+    .primaryButton {
+        color: #fff;
+        background: var(--primary);
+    }
+    .secondaryButton {
+        border-color: var(--line);
+        color: var(--ink-soft);
+        background: #fff;
+    }
+    .controlBar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 26px 0 19px;
+        .searchBox,
+        .filterBox {
+            display: flex;
+            min-height: 44px;
+            align-items: center;
+            gap: 9px;
+            padding: 0 12px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            color: var(--muted);
+            background: #fff;
+            font-size: 16px;
+            &:focus-within {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgb(81 73 168 / 10%);
+            }
+            input,
+            select {
+                min-width: 0;
+                border: 0;
+                outline: 0;
+                color: var(--ink);
+                background: transparent;
+                font-size: 14px;
+            }
+            input { width: 300px; }
+            select { width: 136px; }
+        }
+        .filterBox { padding-right: 10px; }
+        .resultCount {
+            margin-left: auto;
+            color: var(--muted);
+            font-size: 14px;
+        }
+    }
+    .projectGrid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 18px;
+        .projectCard {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 4px 17px rgb(32 35 66 / 4%);
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+            &:hover {
+                border-color: #cecee2;
+                box-shadow: 0 12px 28px rgb(32 35 66 / 9%);
+            }
+            .cover {
+                position: relative;
+                height: 176px;
+                background: #e9e6f2;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                &::after {
+                    position: absolute;
+                    inset: 50% 0 0;
+                    background: linear-gradient(0deg, rgb(22 24 47 / 24%), transparent);
+                    content: "";
+                }
+                .projectNumber {
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 13px;
+                    left: 16px;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 720;
+                    letter-spacing: 0.08em;
+                }
+                .editIcon {
+                    position: absolute;
+                    z-index: 1;
+                    top: 12px;
+                    right: 12px;
+                    display: grid;
+                    width: 38px;
+                    height: 38px;
+                    place-items: center;
+                    border: 1px solid rgb(255 255 255 / 74%);
+                    border-radius: 11px;
+                    color: var(--ink);
+                    background: rgb(255 255 255 / 92%);
+                    font-size: 17px;
+                }
+            }
+            .cardBody {
+                display: grid;
+                padding: 17px 18px 14px;
+                .cardMeta {
+                    display: flex;
+                    min-height: 25px;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    color: var(--muted);
+                    font-size: 13px;
+                }
+                .status {
+                    padding: 4px 8px;
+                    border-radius: 999px;
+                    color: var(--green);
+                    background: #eaf5ee;
+                    font-size: 13px;
+                    font-weight: 620;
+                    &[data-status="Planning"] { color: #5f6281; background: #eeeff4; }
+                    &[data-status="Needs attention"] { color: #9b6519; background: #fff1d8; }
+                    &[data-status="Complete"] { color: #3b7084; background: #e8f5f8; }
+                }
+                .projectTitle {
+                    overflow: hidden;
+                    margin-top: 9px;
+                    border: 0;
+                    color: var(--ink);
+                    background: transparent;
+                    font-size: 18px;
+                    font-weight: 730;
+                    letter-spacing: -0.025em;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .summary {
+                    display: -webkit-box;
+                    min-height: 44px;
+                    overflow: hidden;
+                    margin-top: 5px;
+                    color: var(--muted);
+                    font-size: 14px;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                }
+                .progressHeading {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 17px;
+                    color: var(--muted);
+                    font-size: 13px;
+                    strong { color: var(--ink-soft); font-size: 13px; }
+                }
+                .progressTrack {
+                    overflow: hidden;
+                    height: 8px;
+                    margin-top: 7px;
+                    border-radius: 999px;
+                    background: #eeedf4;
+                    span { display: block; height: 100%; border-radius: inherit; background: var(--primary); }
+                }
+                .details {
+                    display: grid;
+                    gap: 8px;
+                    margin-top: 16px;
+                    padding-bottom: 14px;
+                    border-bottom: 1px solid var(--line);
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        color: var(--ink-soft);
+                        font-size: 13px;
+                        svg { color: var(--muted); }
+                    }
+                }
+                .cardFooter {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+                    padding-top: 11px;
+                    color: var(--muted);
+                    font-size: 13px;
+                    .deleteButton {
+                        display: inline-flex;
+                        min-height: 36px;
+                        align-items: center;
+                        gap: 6px;
+                        padding: 0 9px;
+                        border: 1px solid transparent;
+                        border-radius: 9px;
+                        color: #a24e4d;
+                        background: transparent;
+                        font-size: 13px;
+                        font-weight: 620;
+                    }
+                }
+            }
+            .cornerArrow {
+                display: none;
+            }
+        }
+    }
+    .emptyState {
+        display: grid;
+        min-height: 330px;
+        justify-items: center;
+        align-content: center;
+        padding: 30px;
+        border: 1px dashed #c7c8d4;
+        border-radius: 18px;
+        background: #fff;
+        text-align: center;
+        .emptyIcon {
+            display: grid;
+            width: 52px;
+            height: 52px;
+            place-items: center;
+            border-radius: 16px;
+            color: var(--primary);
+            background: var(--primary-soft);
+            font-size: 22px;
+        }
+        h2 { margin-top: 15px; color: var(--ink); font-size: 21px; font-weight: 720; }
+        p { margin: 6px 0 17px; color: var(--muted); font-size: 14px; }
+    }
+}
+
+.page {
+    @media (max-width: 980px) {
+        .projectGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+        width: calc(100% - 36px);
+        padding-top: 25px;
+        .intro {
+            align-items: flex-start;
+            flex-direction: column;
+            .primaryButton { width: 100%; }
+        }
+        .controlBar {
+            flex-wrap: wrap;
+            .searchBox { flex: 1 1 100%; input { width: 100%; } }
+            .filterBox { flex: 1; select { width: 100%; } }
+        }
+        .projectGrid { grid-template-columns: 1fr; }
+    }
+}
