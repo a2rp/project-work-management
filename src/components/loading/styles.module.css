@@ -1,0 +1,17 @@
+.loading {
+    display: grid;
+    min-height: 60vh;
+    place-items: center;
+    .spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #dedcf4;
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 780ms linear infinite;
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
