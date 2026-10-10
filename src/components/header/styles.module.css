@@ -1,0 +1,221 @@
+.header {
+    position: fixed;
+    z-index: 50;
+    inset: 0 0 auto;
+    height: 78px;
+    border-bottom: 1px solid rgb(228 229 221 / 88%);
+    background: rgb(255 255 255 / 94%);
+    backdrop-filter: blur(18px);
+    transition: transform 240ms ease;
+    &[data-hidden="true"] {
+        transform: translateY(-110%);
+    }
+    .inner {
+        display: flex;
+        width: min(1420px, calc(100% - 56px));
+        height: 100%;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        .brand {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 10px;
+            color: var(--ink);
+            font-size: 20px;
+            font-weight: 780;
+            letter-spacing: -0.065em;
+            .brandMark {
+                display: grid;
+                width: 36px;
+                height: 36px;
+                place-items: center;
+                border-radius: 12px;
+                color: #fff;
+                background: var(--primary);
+                font-size: 20px;
+            }
+            .brandDot {
+                color: var(--green);
+            }
+        }
+        .navigation {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            gap: clamp(18px, 2.6vw, 38px);
+            .link,
+            .activeLink {
+                position: relative;
+                display: inline-flex;
+                height: 100%;
+                align-items: center;
+                color: var(--ink-soft);
+                font-size: 15px;
+                font-weight: 600;
+                &::after {
+                    position: absolute;
+                    right: 0;
+                    bottom: 18px;
+                    left: 0;
+                    height: 3px;
+                    border-radius: 999px;
+                    background: linear-gradient(90deg, var(--green), #b3d952);
+                    content: "";
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 180ms ease;
+                }
+                &:hover,
+                &:focus-visible,
+                &[aria-current="page"] {
+                    color: var(--ink);
+                    text-decoration: none;
+                }
+                &:hover::after,
+                &:focus-visible::after,
+                &[aria-current="page"]::after {
+                    transform: scaleX(1);
+                }
+            }
+            .activeLink {
+                color: var(--ink);
+            }
+            .quickAction,
+            .repository {
+                display: inline-flex;
+                min-height: 42px;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 0 14px;
+                border: 1px solid transparent;
+                border-radius: 12px;
+                font-size: 14px;
+                font-weight: 650;
+                white-space: nowrap;
+            }
+            .quickAction {
+                color: #fff;
+                background: var(--primary);
+            }
+            .repository {
+                border-color: var(--line);
+                color: var(--ink-soft);
+                background: #fff;
+            }
+            .externalIcon {
+                font-size: 14px;
+            }
+        }
+        .menuButton,
+        .mobileAction {
+            display: none;
+        }
+    }
+    .inner {
+        @media (max-width: 920px) {
+            width: min(100% - 36px, 1420px);
+            gap: 16px;
+            .navigation,
+            .navigationOpen {
+                gap: 16px;
+                .link,
+                .activeLink {
+                    font-size: 14px;
+                }
+                .quickAction,
+                .repository {
+                    min-height: 40px;
+                    padding-inline: 11px;
+                }
+            }
+        }
+        @media (max-width: 720px) {
+            width: calc(100% - 32px);
+            .menuButton,
+            .mobileAction {
+                display: inline-flex;
+                min-width: 42px;
+                height: 42px;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 0 11px;
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                color: var(--ink);
+                background: #fff;
+                font-size: 14px;
+                font-weight: 650;
+            }
+            .menuButton {
+                margin-left: auto;
+                font-size: 20px;
+            }
+            .navigation,
+            .navigationOpen {
+                position: absolute;
+                top: 69px;
+                right: 16px;
+                left: 16px;
+                display: none;
+                height: auto;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 5px;
+                padding: 12px;
+                border: 1px solid var(--line);
+                border-radius: 17px;
+                background: #fff;
+                box-shadow: var(--shadow);
+                .link,
+                .activeLink {
+                    min-height: 44px;
+                    padding: 0 12px;
+                    border-radius: 10px;
+                    font-size: 15px;
+                    &::after {
+                        display: none;
+                    }
+                    &:hover,
+                    &[aria-current="page"] {
+                        background: var(--primary-soft);
+                    }
+                }
+                .quickAction,
+                .repository {
+                    justify-content: flex-start;
+                    min-height: 44px;
+                    margin-top: 2px;
+                    padding-inline: 12px;
+                }
+            }
+            .navigationOpen {
+                display: flex;
+            }
+        }
+    }
+    @media (max-width: 420px) {
+        height: 70px;
+        .inner {
+            .brand {
+                font-size: 19px;
+                .brandMark {
+                    width: 34px;
+                    height: 34px;
+                }
+            }
+            .mobileAction {
+                min-width: 40px;
+                width: 42px;
+                padding: 0;
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
