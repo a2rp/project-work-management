@@ -29,7 +29,7 @@ Waypoint is a frontend-only project planning workspace for keeping project dates
 
 ## Data and limits
 
-The project and task records are realistic sample data held in React state. Changes remain available while navigating between routes, then reset on refresh. The app does not use local storage, a database, an API, authentication, or external integrations. The team workload is calculated from the sample task assignments, not from time tracking or live availability.
+The project and task records are realistic sample data held in React state. Sample schedule dates are generated relative to the current date so the timeline remains useful in a fresh session. Changes remain available while navigating between routes, then reset on refresh. The app does not use local storage, a database, an API, authentication, or external integrations. The team workload is calculated from the sample task assignments, not from time tracking or live availability.
 
 ## Screenshots
 
